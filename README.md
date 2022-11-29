@@ -1,5 +1,5 @@
-This is a test
-for the boys bot
+The Boys Discord Bot
 
-hi
--corb
+For directory migration only.
+
+Edit on Windows, pull on Ubuntu.
