@@ -4,7 +4,8 @@ const fs = require('node:fs');
 const foldersA = [
 	"Info",
 	"other",
-	"utility"
+	"utility",
+	"Entertainment"
 ]
 
 
