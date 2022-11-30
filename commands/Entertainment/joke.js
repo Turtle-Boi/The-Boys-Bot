@@ -41,7 +41,7 @@ module.exports = {
     const embed = new EmbedBuilder()
       .setColor("Orange")
       .setTitle("Here's your joke!")
-      .setDescription(`${randomJoke}\nPunchline: ||${randomPunchline}||`)
+      .setDescription(`${randomJoke}\n||${randomPunchline}||`)
       .setTimestamp()
       .setFooter({ text: `Requested by ${interaction.user.tag}`, iconURL: `${interaction.user.displayAvatarURL()}` });
     interaction.reply({ embeds: [embed], ephemeral: false });
