@@ -1,5 +1,3 @@
 The Boys Discord Bot
 
-For directory migration only.
-
-Edit on Windows, pull on Ubuntu.
+You should, like, not steal these files :D
