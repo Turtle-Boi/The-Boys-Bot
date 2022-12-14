@@ -17,13 +17,14 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
   //console.log(newState)
   const test0 = oldState.toJSON()
   //console.log(test0)
+  //console.log(test1)
   const test1 = newState.toJSON()
   const triggeredUserId = test1.id
   const triggeredUser = await client.users.fetch(triggeredUserId)
   const vcLogsChannel = await client.channels.cache.get("1044739015640891543")
-  //console.log(test1)
   if (oldState.mute !== newState.mute) return;
   if (oldState.deaf !== newState.deaf) return;
+  if (oldState.streaming !== newState.streaming) return;
   if (!test1.channel) {
     //Channel leave
     const channelLeftID = test0.channel
