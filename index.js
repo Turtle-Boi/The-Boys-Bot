@@ -51,7 +51,7 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
       .setDescription(`${memberNick} is no longer AFK.\n\n<t:${calculatedTimestamp}:R>\n<t:${calculatedTimestamp}:T>`)
       .setColor(`#46aefc`)
       .setFooter({ text: `VC Interaction Log`, iconURL: `${triggeredUser.displayAvatarURL()}`})
-    vcLogsChannel.send({ content: `**${memberNick}** is no longer AFK.`, embeds: [vcNOTRAFKEmbed] })
+    vcLogsChannel.send({ content: `${memberNick} is no longer AFK.`, embeds: [vcNOTRAFKEmbed] })
   }
   if (oldState.streaming !== newState.streaming) return;
   if (!test1.channel) {
@@ -66,7 +66,7 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
       .setDescription(`${memberNick} left <#${channelLeftID}>.\n\n<t:${calculatedTimestamp}:R>\n<t:${calculatedTimestamp}:T>`)
       .setColor(`#ff0000`)
       .setFooter({ text: `VC Interaction Log`, iconURL: `${triggeredUser.displayAvatarURL()}`})
-    vcLogsChannel.send({ content: `**${memberNick}** left the **${channelLeft.name}** VC.`, embeds: [vcLeaveEmbed] })
+    vcLogsChannel.send({ content: `${memberNick} left the ${channelLeft.name} VC.`, embeds: [vcLeaveEmbed] })
   } else {
     if (newState.channel == "1052147455766052875") return;
     //Channel Join
@@ -79,7 +79,7 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
       .setDescription(`${memberNick} joined <#${channelJoinID}>.\n\n<t:${calculatedTimestamp}:R>\n<t:${calculatedTimestamp}:T>`)
       .setColor(`#00ff29`)
       .setFooter({ text: `VC Interaction Log`, iconURL: `${triggeredUser.displayAvatarURL()}`})
-    vcLogsChannel.send({ content: `${memberNick} joined the **${channelJoined.name}** VC.`, embeds: [vcJoinEmbed] })
+    vcLogsChannel.send({ content: `${memberNick} joined the ${channelJoined.name} VC.`, embeds: [vcJoinEmbed] })
   }
 })
 
