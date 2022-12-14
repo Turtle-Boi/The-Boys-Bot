@@ -15,7 +15,7 @@ module.exports = {
     const logChannel = client.channels.cache.get("1028903092684591154")
     const generatedTimestamp = Date.now()
     const calculatedTimestamp = Math.floor(generatedTimestamp / 1000)
-    purgeChannel.bulkDelete(100).then(messages => {
+    purgeChannel.bulkDelete(100, { filterOld: true }).then(messages => {
         const embed = new EmbedBuilder()
         .setColor("#FF0000")
         .setTitle("Channel Purged")
