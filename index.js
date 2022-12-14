@@ -16,37 +16,70 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
   //console.log(oldState)
   //console.log(newState)
   const test0 = oldState.toJSON()
+  const test1 = newState.toJSON()
   //console.log(test0)
   //console.log(test1)
-  const test1 = newState.toJSON()
   const triggeredUserId = test1.id
   const triggeredUser = await client.users.fetch(triggeredUserId)
   const vcLogsChannel = await client.channels.cache.get("1044739015640891543")
   if (oldState.mute !== newState.mute) return;
   if (oldState.deaf !== newState.deaf) return;
+  const guildThing = client.guilds.cache.get('1028882986046861352')
+    const member = await guildThing.members.fetch(newState.id)
+    const memberNick = member.displayName
+  //Went AFK
+  if (newState.channel == "1052147455766052875") {
+    //#46aefc
+    const channelLeftID = test0.channel
+    var generatedTimestamp = Date.now()
+    var calculatedTimestamp = Math.floor(generatedTimestamp / 1000)
+    const vcAFKEmbed = new EmbedBuilder()
+      .setTitle(`User AFK.`)
+      .setDescription(`${memberNick} has gone AFK.\n\n<t:${calculatedTimestamp}:R>\n<t:${calculatedTimestamp}:T>`)
+      .setColor(`#46aefc`)
+      .setFooter({ text: `VC Interaction Log`, iconURL: `${triggeredUser.displayAvatarURL()}`})
+    vcLogsChannel.send({ content: `**${memberNick}** has gone AFK.`, embeds: [vcAFKEmbed] })
+  }
+  //Not AFK
+  if (oldState.channel == "1052147455766052875") {
+    //#46aefc
+    const channelLeftID = test0.channel
+    var generatedTimestamp = Date.now()
+    var calculatedTimestamp = Math.floor(generatedTimestamp / 1000)
+    const vcNOTRAFKEmbed = new EmbedBuilder()
+      .setTitle(`User AFK.`)
+      .setDescription(`${memberNick} is no longer AFK.\n\n<t:${calculatedTimestamp}:R>\n<t:${calculatedTimestamp}:T>`)
+      .setColor(`#46aefc`)
+      .setFooter({ text: `VC Interaction Log`, iconURL: `${triggeredUser.displayAvatarURL()}`})
+    vcLogsChannel.send({ content: `**${memberNick}** is no longer AFK.`, embeds: [vcNOTRAFKEmbed] })
+  }
   if (oldState.streaming !== newState.streaming) return;
   if (!test1.channel) {
+  if (oldState.channel == "1052147455766052875") return;
     //Channel leave
     const channelLeftID = test0.channel
+    const channelLeft = client.channels.cache.get(`${channelLeftID}`)
     var generatedTimestamp = Date.now()
     var calculatedTimestamp = Math.floor(generatedTimestamp / 1000)
     const vcLeaveEmbed = new EmbedBuilder()
       .setTitle(`Voice channel left.`)
-      .setDescription(`${triggeredUser.username} left <#${channelLeftID}>.\n\n<t:${calculatedTimestamp}:R>\n<t:${calculatedTimestamp}:T>`)
+      .setDescription(`${memberNick} left <#${channelLeftID}>.\n\n<t:${calculatedTimestamp}:R>\n<t:${calculatedTimestamp}:T>`)
       .setColor(`#ff0000`)
       .setFooter({ text: `VC Interaction Log`, iconURL: `${triggeredUser.displayAvatarURL()}`})
-    vcLogsChannel.send({ content: `<@&1044824490464518204>`, embeds: [vcLeaveEmbed] })
+    vcLogsChannel.send({ content: `**${memberNick}** left the **${channelLeft.name}** VC.`, embeds: [vcLeaveEmbed] })
   } else {
+    if (newState.channel == "1052147455766052875") return;
     //Channel Join
     const channelJoinID = test1.channel
+    const channelJoined = client.channels.cache.get(`${channelJoinID}`)
     var generatedTimestamp = Date.now()
     var calculatedTimestamp = Math.floor(generatedTimestamp / 1000)
     const vcJoinEmbed = new EmbedBuilder()
       .setTitle(`Voice channel joined.`)
-      .setDescription(`${triggeredUser.username} joined <#${channelJoinID}>.\n\n<t:${calculatedTimestamp}:R>\n<t:${calculatedTimestamp}:T>`)
-      .setColor(`#46aefc`)
+      .setDescription(`${memberNick} joined <#${channelJoinID}>.\n\n<t:${calculatedTimestamp}:R>\n<t:${calculatedTimestamp}:T>`)
+      .setColor(`#00ff29`)
       .setFooter({ text: `VC Interaction Log`, iconURL: `${triggeredUser.displayAvatarURL()}`})
-    vcLogsChannel.send({ content: `<@&1044824445241528351>`, embeds: [vcJoinEmbed] })
+    vcLogsChannel.send({ content: `${memberNick} joined the **${channelJoined.name}** VC.`, embeds: [vcJoinEmbed] })
   }
 })
 
