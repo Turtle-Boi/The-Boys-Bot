@@ -30,9 +30,9 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
     const member = await guildThing.members.fetch(newState.id)
     const memberNick = member.displayName
   //Went AFK
-  if (newState.channel == "1052147455766052875") {
+  if (newState.channelId == "1052147455766052875") {
     //#46aefc
-    const channelLeftID = test0.channel
+    const channelLeftID = test0.channelId
     var generatedTimestamp = Date.now()
     var calculatedTimestamp = Math.floor(generatedTimestamp / 1000)
     const vcAFKEmbed = new EmbedBuilder()
@@ -43,9 +43,9 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
     vcLogsChannel.send({ content: `**${memberNick}** has gone AFK.`, embeds: [vcAFKEmbed] })
   }
   //Not AFK
-  if (oldState.channel == "1052147455766052875") {
+  if (oldState.channelId == "1052147455766052875") {
     //#46aefc
-    const channelLeftID = test0.channel
+    const channelLeftID = test0.channelId
     var generatedTimestamp = Date.now()
     var calculatedTimestamp = Math.floor(generatedTimestamp / 1000)
     const vcNOTRAFKEmbed = new EmbedBuilder()
@@ -56,10 +56,10 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
     vcLogsChannel.send({ content: `${memberNick} is no longer AFK.`, embeds: [vcNOTRAFKEmbed] })
   }
   if (oldState.streaming !== newState.streaming) return;
-  if (!test1.channel) {
-  if (oldState.channel == "1052147455766052875") return;
+  if (!test1.channelId) {
+  if (oldState.channelId == "1052147455766052875") return;
     //Channel leave
-    const channelLeftID = test0.channel
+    const channelLeftID = test0.channelId
     const channelLeft = client.channels.cache.get(`${channelLeftID}`)
     var generatedTimestamp = Date.now()
     var calculatedTimestamp = Math.floor(generatedTimestamp / 1000)
@@ -70,9 +70,9 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
       .setFooter({ text: `VC Interaction Log`, iconURL: `${triggeredUser.displayAvatarURL()}`})
     vcLogsChannel.send({ content: `${memberNick} left the ${channelLeft.name} VC.`, embeds: [vcLeaveEmbed] })
   } else {
-    if (newState.channel == "1052147455766052875") return;
+    if (newState.channelId == "1052147455766052875") return;
     //Channel Join
-    const channelJoinID = test1.channel
+    const channelJoinID = test1.channelId
     const channelJoined = client.channels.cache.get(`${channelJoinID}`)
     var generatedTimestamp = Date.now()
     var calculatedTimestamp = Math.floor(generatedTimestamp / 1000)
