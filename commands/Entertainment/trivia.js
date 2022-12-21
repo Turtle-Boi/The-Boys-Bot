@@ -80,13 +80,13 @@ module.exports = {
     //console.log(decryptedAPI)
 
     //Embed Assets Defined
-    const apiCategory = `decryptedAPI.results[0].category`;
-    const apiDifficulty = `decryptedAPI.results[0].difficulty`;
-    const apiQuestion = `decryptedAPI.results[0].question`;
-    const apiCorrectAnswer = `decryptedAPI.results[0].correct_answer`;
-    const apiIncorrectAnswer1 = `decryptedAPI.results[0].incorrect_answers[0]`;
-    const apiIncorrectAnswer2 = `decryptedAPI.results[0].incorrect_answers[1]`;
-    const apiIncorrectAnswer3 = `decryptedAPI.results[0].incorrect_answers[2]`;
+    const apiCategory = decryptedAPI.results[0].category;
+    const apiDifficulty = decryptedAPI.results[0].difficulty;
+    const apiQuestion = decryptedAPI.results[0].question;
+    const apiCorrectAnswer = decryptedAPI.results[0].correct_answer;
+    const apiIncorrectAnswer1 = decryptedAPI.results[0].incorrect_answers[0];
+    const apiIncorrectAnswer2 = decryptedAPI.results[0].incorrect_answers[1];
+    const apiIncorrectAnswer3 = decryptedAPI.results[0].incorrect_answers[2];
 
     //Unix timestamp
     const generatedTimestamp = Date.now()
