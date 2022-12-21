@@ -110,11 +110,25 @@ module.exports = {
       
         return array;
       }
+
+      function quoteFix(element) {
+        const element1 = element.replaceAll(`&quot;`, `"`)
+        const element2 = element1.replaceAll(`&#039;`, `'`)
+        const element3 = element2.replaceAll(`&eacute;`, `é`)
+
+        return element3
+    }
+    const questionCorrected = quoteFix(apiQuestion);
+    const cAnswerCorrected = quoteFix(apiCorrectAnswer);
+    const iAnswerCorrected1 = quoteFix(apiIncorrectAnswer1);
+    const iAnswerCorrected2 = quoteFix(apiIncorrectAnswer2);
+    const iAnswerCorrected3 = quoteFix(apiIncorrectAnswer3);
+
     var arr = [
-        `${apiCorrectAnswer}`,
-        `${apiIncorrectAnswer1}`,
-        `${apiIncorrectAnswer2}`,
-        `${apiIncorrectAnswer3}`
+        `${cAnswerCorrected}`,
+        `${iAnswerCorrected1}`,
+        `${iAnswerCorrected2}`,
+        `${iAnswerCorrected3}`
     ]
     shuffle(arr)
 
@@ -127,11 +141,14 @@ module.exports = {
         return capitalized;
     }
     const result = capitalizeFirstLetter(apiDifficulty);
+
+    
+
     //Build Embed
     const embed = new EmbedBuilder()
       .setColor("Blue")
       .setTitle(`Trivia`)
-      .setDescription(`**Category**\n${apiCategory}\n\n**Difficulty**\n${result}\n\n**Question**\n${apiQuestion}\n\n**Answers**\nA. ${arr[0]}\nB. ${arr[1]}\n C. ${arr[2]}\nD. ${arr[3]}\n\n**Correct Answer**\n||${apiCorrectAnswer}||`)
+      .setDescription(`**Category**\n${apiCategory}\n\n**Difficulty**\n${result}\n\n**Question**\n${questionCorrected}\n\n**Answers**\nA. ${arr[0]}\nB. ${arr[1]}\n C. ${arr[2]}\nD. ${arr[3]}\n\n**Correct Answer**\n||Correct Answer: ${apiCorrectAnswer}||`)
       .setFooter({ text: `Provided by OpenTDB.com`, iconURL: `${interaction.user.displayAvatarURL()}` })
       .setTimestamp();
 
