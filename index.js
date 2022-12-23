@@ -30,6 +30,8 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
     const member = await guildThing.members.fetch(newState.id)
     const memberNick = member.displayName
   //Went AFK
+
+
   if (newState.channel == "1052147455766052875") {
     //#46aefc
     const channelLeftID = test0.channel
