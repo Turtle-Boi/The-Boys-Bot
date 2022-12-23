@@ -40,7 +40,7 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
       .setDescription(`${memberNick} has gone AFK.\n\n<t:${calculatedTimestamp}:R>\n<t:${calculatedTimestamp}:T>`)
       .setColor(`#46aefc`)
       .setFooter({ text: `VC Interaction Log`, iconURL: `${triggeredUser.displayAvatarURL()}`})
-    vcLogsChannel.send({ content: `**${memberNick}** has gone AFK.`, embeds: [vcAFKEmbed] })
+    vcLogsChannel.send({ content: `${memberNick} has gone AFK.`, embeds: [vcAFKEmbed] })
   }
   //Not AFK
   if (oldState.channel == "1052147455766052875") {
