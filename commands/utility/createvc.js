@@ -1,4 +1,4 @@
-const { EmbedBuilder, SlashCommandBuilder, PermissionFlagsBits, ChannelType } = require("discord.js");
+const { EmbedBuilder, SlashCommandBuilder, PermissionFlagsBits, ChannelType, Embed } = require("discord.js");
 const { guilds } = require("../..");
 
 
@@ -27,6 +27,8 @@ module.exports = {
   
 
   run: async (client, interaction) => {
+    var generatedTimestamp = Date.now()
+    var calculatedTimestamp = Math.floor(generatedTimestamp / 1000)
     //Option variables
     var vcUserLimit = interaction.options.getNumber('userlimit')
     const vcGame = interaction.options.getString('vcgame')
@@ -35,6 +37,12 @@ module.exports = {
     //console.log(`User Limit: ${vcUserLimitString}`)
     const member = await theBoysGuild.members.fetch(interaction.user.id)
     const memberNick = member.displayName
+
+    const channelCreateEmbed = new EmbedBuilder()
+    .setTitle(`New Channel Created`)
+    .setColor(`#46aefc`)
+    .setDescription(`**Creator**\n${memberNick}\n\n**Category**\n${vcGame}\n\n**Limit**\n${vcUserLimitString}\n\n<t:${calculatedTimestamp}:R>\n<t:${calculatedTimestamp}:T>`)
+    .setFooter({ text: `VC Creation Log`, iconURL: `${interaction.user.displayAvatarURL()}`})
 
     const newChannel = await theBoysGuild.channels.create({
         name: `${vcGame} - ${memberNick}`,
@@ -57,11 +65,10 @@ module.exports = {
             }
         }
     })
-    
 
-    //send final embed
+
     await interaction.reply({ content: `Created a new voice channel! <#${newChannelID}> *Channel will delete upon vacancy.*`, ephemeral: true });
     
-    logChannel.send(`${memberNick} created **${newChannel.name}** VC.`)
+    logChannel.send({ embeds: [channelCreateEmbed] })
   },
 };
