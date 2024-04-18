@@ -1,0 +1,70 @@
+The Boys#8844 is up and ready to go!
+The Boys#8844 is up and ready to go!
+(node:606020) ExperimentalWarning: The Fetch API is an experimental feature. This feature could change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:internal/process/promises:288
+            triggerUncaughtException(err, true /* fromPromise */);
+            ^
+
+Error: getaddrinfo EAI_AGAIN discord.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:107:26) {
+  errno: -3001,
+  code: 'EAI_AGAIN',
+  syscall: 'getaddrinfo',
+  hostname: 'discord.com'
+}
+
+Node.js v18.12.1
+node:internal/process/promises:288
+            triggerUncaughtException(err, true /* fromPromise */);
+            ^
+
+Error: getaddrinfo EAI_AGAIN discord.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:107:26) {
+  errno: -3001,
+  code: 'EAI_AGAIN',
+  syscall: 'getaddrinfo',
+  hostname: 'discord.com'
+}
+
+Node.js v18.12.1
+node:internal/process/promises:288
+            triggerUncaughtException(err, true /* fromPromise */);
+            ^
+
+Error: getaddrinfo EAI_AGAIN discord.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:107:26) {
+  errno: -3001,
+  code: 'EAI_AGAIN',
+  syscall: 'getaddrinfo',
+  hostname: 'discord.com'
+}
+
+Node.js v18.12.1
+node:internal/process/promises:288
+            triggerUncaughtException(err, true /* fromPromise */);
+            ^
+
+Error: getaddrinfo EAI_AGAIN discord.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:107:26) {
+  errno: -3001,
+  code: 'EAI_AGAIN',
+  syscall: 'getaddrinfo',
+  hostname: 'discord.com'
+}
+
+Node.js v18.12.1
+node:internal/process/promises:288
+            triggerUncaughtException(err, true /* fromPromise */);
+            ^
+
+Error: getaddrinfo EAI_AGAIN discord.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:107:26) {
+  errno: -3001,
+  code: 'EAI_AGAIN',
+  syscall: 'getaddrinfo',
+  hostname: 'discord.com'
+}
+
+Node.js v18.12.1
+The Boys#8844 is up and ready to go!

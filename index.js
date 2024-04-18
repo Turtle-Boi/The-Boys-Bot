@@ -26,6 +26,7 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
   const vcLogsChannel = await client.channels.cache.get("1044739015640891543")
   if (oldState.mute !== newState.mute) return;
   if (oldState.deaf !== newState.deaf) return;
+  if (triggeredUserId == "1157608928948002816") return;
   const guildThing = client.guilds.cache.get('1028882986046861352')
     const member = await guildThing.members.fetch(newState.id)
     const memberNick = member.displayName
